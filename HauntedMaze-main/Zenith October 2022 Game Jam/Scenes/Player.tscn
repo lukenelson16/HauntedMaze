@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://Assets/flashlight_beam.png" type="Texture" id=2]
+[ext_resource path="res://Assets/icon.png" type="Texture" id=3]
+[ext_resource path="res://Assets/death.wav" type="AudioStream" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
+
+[node name="Player" type="KinematicBody2D"]
+scale = Vector2( 0.5, 0.5 )
+collision_layer = 2
+collision_mask = 5
+script = ExtResource( 1 )
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+rotation = -1.5708
+texture = ExtResource( 3 )
+
+[node name="ConeLight" type="Light2D" parent="."]
+position = Vector2( 26.9858, -0.76203 )
+rotation = -1.5708
+scale = Vector2( 0.144447, 0.198394 )
+texture = ExtResource( 2 )
+offset = Vector2( 90, 1200 )
+energy = 1.5
+shadow_enabled = true
+shadow_gradient_length = 5.0
+shadow_filter = 1
+shadow_filter_smooth = 10.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.5, 0.5 )
+
+[node name="PlayerLight" type="Light2D" parent="."]
+rotation = -1.5708
+texture = ExtResource( 3 )
+color = Color( 1, 1, 1, 0.686275 )
+energy = 1.25
+
+[node name="StopperBeam" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StopperBeam"]
+position = Vector2( 28, -7.62939e-06 )
+scale = Vector2( 0.759619, 0.679473 )
+polygon = PoolVector2Array( 8.08904, 0, 450.745, -232, 449.068, 204 )
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
