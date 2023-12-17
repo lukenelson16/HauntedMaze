@@ -40,7 +40,6 @@ position = Vector2( -246, 167 )
 [node name="Player" parent="." instance=ExtResource( 7 )]
 
 [node name="Darkness" parent="." instance=ExtResource( 1 )]
-visible = false
 
 [node name="Enemy" type="Path2D" parent="."]
 position = Vector2( -72, 143 )
